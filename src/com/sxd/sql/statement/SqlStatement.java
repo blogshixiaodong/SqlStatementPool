@@ -1,8 +1,10 @@
 package com.sxd.sql.statement;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.sxd.sql.builder.SqlBuilder;
 
@@ -36,6 +38,10 @@ public abstract class SqlStatement {
 		setField(fieldList.toArray(new String[0]));
 	}
 	
+	public void setField(Set<String> fieldSet) {
+		setField(new ArrayList<String>(fieldSet));
+	}
+	
 	//…Ë÷√SQLÃıº˛
 	public void setCondition(String[] conditionArr) {
 		if(usingMap) {
@@ -47,8 +53,12 @@ public abstract class SqlStatement {
 		this.conditionArr = conditionArr;
 	}
 	
-	public void setCondition(List<String> list) {
-		setCondition(list.toArray(new String[0]));
+	public void setCondition(List<String> conditionList) {
+		setCondition(conditionList.toArray(new String[0]));
+	}
+	
+	public void setCondition(Set<String> conditionSet) {
+		setCondition(new ArrayList<String>(conditionSet));
 	}
 	
 	public void setCondition(Map<String, String> conditionMap) {
